@@ -13,6 +13,29 @@
     font-size: 18px;
     color: #666;
   }
+  .cart-message {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 10px 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .quantity-controls button {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
   .product-card {
     width: 250px;  /* Set a fixed width */
     height: 300px; /* Set a fixed height */
@@ -83,6 +106,52 @@
     padding: 10px;
     margin-top: 10px;
     cursor: pointer;
+  }
+  .go-to-cart {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    text-align: center;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .add-to-cart,
+  .go-to-cart {
+    flex: 1;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+  
+  .add-to-cart:hover,
+  .go-to-cart:hover {
+    background-color: #555;
+  }
+  
+  
+  .go-to-cart:hover {
+    background-color: #555;
   }
   
   .add-to-cart:hover {

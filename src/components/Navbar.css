@@ -12,6 +12,18 @@
     margin-right: 40px; /* Moves slightly to the left */
     padding: 0;
   }
+  .login-link {
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .login-link:hover {
+    background-color: #0056b3;
+  }
   
   .nav-links li {
     display: inline;

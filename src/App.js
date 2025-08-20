@@ -1,16 +1,21 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import Cart from "./components/Cart";
+import Login from "./components/Login";
 
 function App() {
+  const [cart, setCart] = useState([]); 
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Authentication state
+
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/product" element={<h1>Product Page</h1>} />
-        <Route path="/cart" element={<h1>Cart Page</h1>} />
-        <Route path="/contact" element={<h1>Contact Page</h1>} />
+        <Route path="/" element={<Home setCart={setCart} />} />
+        <Route path="/cart" element={isAuthenticated ? <Cart cart={cart} /> : <Navigate to="/login" />} />
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
       </Routes>
     </Router>
   );
