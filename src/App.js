@@ -4,6 +4,9 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
+import Signup from "./components/signup"; // Match lowercase filename
+import Product from "./components/Product";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const [cart, setCart] = useState([]); 
@@ -16,6 +19,25 @@ function App() {
         <Route path="/" element={<Home setCart={setCart} />} />
         <Route path="/cart" element={isAuthenticated ? <Cart cart={cart} /> : <Navigate to="/login" />} />
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/signup" element={<Signup />} />
+        
+        {/* Cleaned up Protected Product Route */}
+        <Route 
+          path="/product" 
+          element={
+            <ProtectedRoute>
+              <Product />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+  path="/product" 
+  element={
+    <ProtectedRoute>
+      <Product setCart={setCart} />
+    </ProtectedRoute>
+  } 
+/>
       </Routes>
     </Router>
   );

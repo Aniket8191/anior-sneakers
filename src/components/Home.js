@@ -1,84 +1,78 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import A1 from "../assets/A1.jpg";
-import A2 from "../assets/A2.jpg";
-import A3 from "../assets/A3.jpg";
-import A4 from "../assets/A4.jpg";
-import A5 from "../assets/A5.jpg";
-import A6 from "../assets/A6.jpg";
-import A7 from "../assets/A7.jpg";
-import A8 from "../assets/A8.jpg";
-import A9 from "../assets/A9.jpg";
+import V1 from "../assets/V2.mp4"; // Your main looping background video
+import B7 from "../assets/B7.jpg";  // The streetwear portrait image
+import B1 from "../assets/B5.jpg";  // Second lifestyle image for performance card
+
 import "./Home.css";
 
-const products = [
-  { id: 1, img: A1, name: "Sneaker 1", price: 4999 },
-  { id: 2, img: A2, name: "Sneaker 2", price: 5499 },
-  { id: 3, img: A3, name: "Sneaker 3", price: 6299 },
-  { id: 4, img: A4, name: "Sneaker 4", price: 4799 },
-  { id: 5, img: A5, name: "Sneaker 5", price: 5999 },
-  { id: 6, img: A6, name: "Sneaker 6", price: 6499 },
-  { id: 7, img: A7, name: "Sneaker 7", price: 10899 },
-  { id: 8, img: A8, name: "Sneaker 8", price: 9999 },
-  { id: 9, img: A9, name: "Sneaker 9", price: 8799 },
-];
-
-const Home = ({ setCart }) => {
-  const [selectedQuantities, setSelectedQuantities] = useState({});
-  const [message, setMessage] = useState("");
+const Home = () => {
   const navigate = useNavigate();
-
-  const handleAddToCart = (product) => {
-    const quantity = selectedQuantities[product.id] || 1;
-    setCart((prevCart) => [...prevCart, { ...product, quantity }]);
-    setMessage(`${product.name} (x${quantity}) added to cart!`);
-    setTimeout(() => setMessage(""), 2000);
-  };
-
-  const handleQuantityChange = (productId, quantity) => {
-    setSelectedQuantities((prev) => ({
-      ...prev,
-      [productId]: quantity,
-    }));
-  };
 
   return (
     <div className="home-container">
-      <h1 className="title">Welcome to our site!</h1>
-      <h1 className="brand-name">ANIOR</h1>
-      <p className="subtitle">Explore our latest sneaker collection.</p>
+      
+      {/* SECTION 1: THE VIDEO HERO BANNER */}
+      <section className="hero-video-section">
+        {/* Background Video looping seamlessly */}
+        <video className="hero-bg-video" autoPlay loop muted playsInline>
+          <source src={V1} type="video/mp4" />
+        </video>
+        
+        {/* Text Overlaying the Video */}
+        <div className="hero-video-overlay">
+          <h1 className="hero-brand-name">ANIOR</h1>
+          <p className="hero-subtitle">Step into tomorrow.</p>
+          <button className="apple-btn" onClick={() => navigate("/product")}>
+            Explore Collection
+          </button>
+        </div>
+      </section>
 
-      {message && <p className="cart-message">{message}</p>}
-
-      <div className="product-grid">
-        {products.map((product) => (
-          <div className="product-box" key={product.id}>
-            <img src={product.img} alt={product.name} className="product-image" />
-            <h3>{product.name}</h3>
-            <p>₹{product.price}</p>
-
-            <select
-              className="quantity-selector"
-              onChange={(e) => handleQuantityChange(product.id, parseInt(e.target.value, 10))}
-            >
-              {[...Array(10)].map((_, i) => (
-                <option key={i + 1} value={i + 1}>
-                  {i + 1}
-                </option>
-              ))}
-            </select>
-
-            <div className="button-container">
-              <button className="add-to-cart" onClick={() => handleAddToCart(product)}>
-                Add to Cart
-              </button>
-              <button className="go-to-cart" onClick={() => navigate("/cart")}>
-                Go to Cart
-              </button>
-            </div>
+      {/* SECTION 2: THE LIFESTYLE VS PERFORMANCE SPLIT */}
+      <section className="split-showcase-section">
+        
+        {/* Left Card: Streetwear / Lifestyle */}
+        <div className="showcase-card">
+          <div className="card-overlay">
+            <h2>Built for the concrete.</h2>
+            <p>Streetwear meets unparalleled comfort.</p>
+            <button className="apple-link-btn" onClick={() => navigate("/product")}>
+              Explore Lifestyle &rarr;
+            </button>
           </div>
-        ))}
-      </div>
+          <div className="card-media-wrapper">
+            <img src={B7} alt="Streetwear Lifestyle" className="card-image-asset" />
+          </div>
+        </div>
+
+        {/* Right Card: Athletic / Performance */}
+        <div className="showcase-card">
+          <div className="card-overlay">
+            <h2>Engineered for speed.</h2>
+            <p>Push boundaries with responsive technology.</p>
+            <button className="apple-link-btn" onClick={() => navigate("/product")}>
+              Explore Performance &rarr;
+            </button>
+          </div>
+          <div className="card-media-wrapper">
+            <img src={B1} alt="Performance Sneaker" className="card-image-asset" />
+          </div>
+        </div>
+
+      </section>
+
+      {/* SECTION 3: THE CALL TO ACTION PANEL */}
+      <section className="cta-closing-section">
+        <div className="cta-content">
+          <h2>Upgrade your rotation.</h2>
+          <p>Experience premium design engineered for everyday life.</p>
+          <button className="apple-btn-dark" onClick={() => navigate("/product")}>
+            Shop All Shoes
+          </button>
+        </div>
+      </section>
+
     </div>
   );
 };
