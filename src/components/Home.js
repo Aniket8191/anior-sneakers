@@ -1,12 +1,5 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import V1 from "../assets/V1.mp4"; 
-import V2 from "../assets/V2.mp4"; // Slider Video 1
-import V3 from "../assets/V3.mp4"; // Slider Video 2
-import V5 from "../assets/V5.mp4"; // Slider Video 4
-import V6 from "../assets/V6.mp4"; // Slider Video 5
-import V8 from "../assets/V8.mp4"; // Slider Video 6
-import V9 from "../assets/V9.mp4"; // Slider Video 7
 import B7 from "../assets/B7.jpg";  
 import B1 from "../assets/B1.jpg";  
 
@@ -51,7 +44,7 @@ const Home = () => {
     }
   };
 
-  // NEW FUNCTION: Allows clicking a dot to scroll directly to that video card
+  // Allows clicking a dot to scroll directly to that video card
   const scrollToCard = (index) => {
     if (sliderRef.current) {
       sliderRef.current.scrollTo({
@@ -67,9 +60,16 @@ const Home = () => {
       
       {/* SECTION 1: THE VIDEO HERO BANNER */}
       <section className="hero-video-section">
-        <video className="hero-bg-video" autoPlay loop muted playsInline preload="auto">
-          <source src={V1} type="video/mp4" />
-        </video>
+        {/* Pointing directly to the public/videos folder path */}
+        <video 
+          className="hero-bg-video" 
+          src="/videos/V1.mp4"
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          preload="auto"
+        />
         <div className="hero-video-overlay">
           <h1 className="hero-brand-name">ANIOR</h1>
           <p className="hero-subtitle">Step into tomorrow.</p>
@@ -133,10 +133,9 @@ const Home = () => {
             <video 
               ref={(el) => (videoRefs.current[0] = el)}
               className="slider-video" 
+              src="/videos/V2.mp4"
               loop muted playsInline preload="auto"
-            >
-              <source src={V2} type="video/mp4" />
-            </video>
+            />
           </div>
 
           {/* Card 2 */}
@@ -151,10 +150,9 @@ const Home = () => {
             <video 
               ref={(el) => (videoRefs.current[1] = el)}
               className="slider-video" 
+              src="/videos/V6.mp4"
               loop muted playsInline preload="auto"
-            >
-              <source src={V6} type="video/mp4" />
-            </video>
+            />
           </div>
 
           {/* Card 3 */}
@@ -169,10 +167,9 @@ const Home = () => {
             <video 
               ref={(el) => (videoRefs.current[2] = el)}
               className="slider-video" 
+              src="/videos/V5.mp4"
               loop muted playsInline preload="auto"
-            >
-              <source src={V5} type="video/mp4" />
-            </video>
+            />
           </div>
 
           {/* Card 4 */}
@@ -187,10 +184,9 @@ const Home = () => {
             <video 
               ref={(el) => (videoRefs.current[3] = el)}
               className="slider-video" 
+              src="/videos/V8.mp4"
               loop muted playsInline preload="auto"
-            >
-              <source src={V8} type="video/mp4" />
-            </video>
+            />
           </div>
 
           {/* Card 5 */}
@@ -205,10 +201,9 @@ const Home = () => {
             <video 
               ref={(el) => (videoRefs.current[4] = el)}
               className="slider-video" 
+              src="/videos/V9.mp4"
               loop muted playsInline preload="auto"
-            >
-              <source src={V9} type="video/mp4" />
-            </video>
+            />
           </div>
 
           {/* Card 6 */}
@@ -223,10 +218,9 @@ const Home = () => {
             <video 
               ref={(el) => (videoRefs.current[5] = el)}
               className="slider-video" 
+              src="/videos/V3.mp4"
               loop muted playsInline preload="auto"
-            >
-              <source src={V3} type="video/mp4" />
-            </video>
+            />
           </div>
         </div>
 

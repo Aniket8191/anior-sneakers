@@ -9,7 +9,7 @@ import A6 from "../assets/A6.jpg";
 import A7 from "../assets/A7.jpg";
 import A8 from "../assets/A8.jpg";
 import A9 from "../assets/A9.jpg";
-import "./Home.css"; // Reusing the product grid styles for now
+import "./Product.css";// Reusing the product grid styles for now
 
 const products = [
   { id: 1, img: A1, name: "Sneaker 1", price: 4999 },

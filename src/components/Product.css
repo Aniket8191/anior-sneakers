@@ -1,0 +1,136 @@
+/* Container padding and seamless dark background */
+/* Container padding and seamless dark background - Full Width Fix */
+.home-container {
+  width: 100%;             /* Force it to span edge-to-edge */
+  max-width: 100vw;        /* Locks viewport width completely */
+  margin: 0;               /* Remove auto-centering margins */
+  padding: 100px 40px 40px 40px; /* Generous breathing room top/bottom/sides */
+  text-align: center;
+  background-color: #000000; 
+  box-sizing: border-box;  /* Prevents side scrollbars */
+}
+
+/* Bright, clean text visibility for dark mode */
+.title {
+  color: #ffffff; /* Flipped to white so it pops */
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #aaaaaa; /* Soft silver gray for the sub-headline */
+  margin-bottom: 40px;
+}
+
+/* Smooth responsive grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 10px;
+}
+
+/* Individual product card - Completely Dark Theme */
+.product-box {
+  background: #111111; /* Sleek dark gray card body instead of white */
+  border: 1px solid #222222; /* Subtle dark border lines */
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05); /* Soft dark-mode glow */
+}
+
+/* Image scaling remains identical but with a dark backing placeholder */
+.product-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Product Titles & Prices made readable */
+.product-box h3 {
+  font-size: 1.2rem;
+  margin: 10px 0 5px 0;
+  color: #ffffff; /* Sneaker title changed to white */
+}
+
+.product-box p {
+  font-weight: 600;
+  color: #ffffff; /* Currency price changed to white */
+  margin-bottom: 15px;
+}
+
+/* Dropdown selector styling to match dark theme */
+.quantity-selector {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #333333;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  background-color: #222222; /* Dark background dropdown */
+  color: #ffffff; /* White text inside dropdown */
+}
+
+/* Buttons container */
+.button-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.add-to-cart, .go-to-cart {
+  flex: 1;
+  padding: 10px 5px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+/* Solid accent button */
+.add-to-cart {
+  background-color: #0070f3; /* Using a clean blue accent to match your button styles */
+  color: #ffffff;
+}
+
+.add-to-cart:hover {
+  background-color: #0051a8;
+}
+
+/* Muted secondary button */
+.go-to-cart {
+  background-color: #222222;
+  color: #cccccc;
+  border: 1px solid #333333;
+}
+
+.go-to-cart:hover {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* Toast alert notification positioning */
+.cart-message {
+  background-color: #0070f3;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}

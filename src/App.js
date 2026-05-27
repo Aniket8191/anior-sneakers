@@ -22,14 +22,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         
         {/* Cleaned up Protected Product Route */}
-        <Route 
-          path="/product" 
-          element={
-            <ProtectedRoute>
-              <Product />
-            </ProtectedRoute>
-          } 
-        />
+        
         <Route 
   path="/product" 
   element={
