@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
 
@@ -14,21 +15,25 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      // Live Firebase Sign-In Authentication
-      await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      alert("✅ Login Successful!");
-      if (setIsAuthenticated) setIsAuthenticated(true);
-    } catch (err) {
-      console.error("Login error:", err);
-      alert("❌ " + err.message.replace("Firebase: ", ""));
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    await signInWithEmailAndPassword(
+      auth,
+      formData.email,
+      formData.password
+    );
+
+    navigate("/product", { replace: true });
+
+  } catch (err) {
+    console.error("Login error:", err);
+    alert("❌ " + err.message.replace("Firebase: ", ""));
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="login-page">

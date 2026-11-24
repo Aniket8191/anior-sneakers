@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import "./Login.css"; // Reusing the same premium dark styling
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "", confirmPassword: "" });
   const [loading, setLoading] = useState(false);
 
@@ -19,8 +21,8 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      await createUserWithEmailAndPassword(auth, formData.email, formData.password);
-      alert("✅ Account Created Successfully!");
+        await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+        navigate("/product", { replace: true });
     } catch (err) {
       alert("❌ " + err.message.replace("Firebase: ", ""));
     } finally {
