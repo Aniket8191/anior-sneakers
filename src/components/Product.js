@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import A1 from "../assets/A1.jpg";
 import A2 from "../assets/A2.jpg";
@@ -11,19 +11,40 @@ import A8 from "../assets/A8.jpg";
 import A9 from "../assets/A9.jpg";
 import "./Product.css";// Reusing the product grid styles for now
 
-const products = [
-  { id: 1, img: A1, name: "Sneaker 1", price: 4999 },
-  { id: 2, img: A2, name: "Sneaker 2", price: 5499 },
-  { id: 3, img: A3, name: "Sneaker 3", price: 6299 },
-  { id: 4, img: A4, name: "Sneaker 4", price: 4799 },
-  { id: 5, img: A5, name: "Sneaker 5", price: 5999 },
-  { id: 6, img: A6, name: "Sneaker 6", price: 6499 },
-  { id: 7, img: A7, name: "Sneaker 7", price: 10899 },
-  { id: 8, img: A8, name: "Sneaker 8", price: 9999 },
-  { id: 9, img: A9, name: "Sneaker 9", price: 8799 },
-];
+const imageMap = {
+  "A1.jpg": A1,
+  "A2.jpg": A2,
+  "A3.jpg": A3,
+  "A4.jpg": A4,
+  "A5.jpg": A5,
+  "A6.jpg": A6,
+  "A7.jpg": A7,
+  "A8.jpg": A8,
+  "A9.jpg": A9,
+};
 
 const Product = ({ setCart }) => {
+  const [products, setProducts] = useState([]);
+
+useEffect(() => {
+  fetch("/api/products")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch products");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const formattedProducts = data.map((product) => ({
+        ...product,
+        price: Number(product.price),
+        img: imageMap[product.img],
+      }));
+
+      setProducts(formattedProducts);
+    })
+    .catch((error) => console.error(error));
+}, []);
   const [selectedQuantities, setSelectedQuantities] = useState({});
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
